@@ -1,0 +1,53 @@
+//---------------------------------------------------------------------------
+
+#ifndef Unit7H
+#define Unit7H
+//---------------------------------------------------------------------------
+#include <System.Classes.hpp>
+#include <Vcl.Controls.hpp>
+#include <Vcl.StdCtrls.hpp>
+#include <Vcl.Forms.hpp>
+#include <Data.DB.hpp>
+#include <Data.Win.ADODB.hpp>
+#include <Vcl.ExtCtrls.hpp>
+#include <Vcl.WinXPickers.hpp>
+//---------------------------------------------------------------------------
+class TForm7 : public TForm
+{
+__published:	// IDE-managed Components
+	TADOQuery *ADOQuery1;
+	TDataSource *DataSource1;
+	TADOQuery *ADOQuery2;
+	TDataSource *DataSource2;
+	TTimer *Timer1;
+	TComboBox *ComboBox1;
+	TComboBox *ComboBox2;
+	TADOQuery *ADOQuery3;
+	TDataSource *DataSource3;
+	TTimer *Timer2;
+	TButton *Button1;
+	TDatePicker *DatePicker1;
+	TDatePicker *DatePicker2;
+	TMemo *Memo1;
+	TEdit *Edit1;
+	TLabel *Label1;
+	TLabel *Label2;
+	TButton *Button2;
+	TADOConnection *ADOConnection1;
+	TTimer *Timer3;
+	TLabel *Label3;
+	void __fastcall Timer1Timer(TObject *Sender);
+	void __fastcall Timer2Timer(TObject *Sender);
+	void __fastcall Button1Click(TObject *Sender);
+	void __fastcall Button2Click(TObject *Sender);
+	void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
+	void __fastcall Edit1KeyPress(TObject *Sender, System::WideChar &Key);
+	void __fastcall Timer3Timer(TObject *Sender);
+private:	// User declarations
+public:		// User declarations
+	__fastcall TForm7(TComponent* Owner);
+};
+//---------------------------------------------------------------------------
+extern PACKAGE TForm7 *Form7;
+//---------------------------------------------------------------------------
+#endif

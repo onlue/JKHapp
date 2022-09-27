@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>1899.12.30 00:00:00.000.916,=\\server\UserData$\1194900\Desktop\уп трпо\программа\Unit8.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.577,\\server\UserData$\1194900\Desktop\уп трпо\программа\Unit1.cpp=\\server\UserData$\1194900\Documents\Embarcadero\Studio\Projects\Unit1.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.793,=\\server\UserData$\1194900\Documents\Embarcadero\Studio\Projects\Project3PCH1.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.728,=\\server\UserData$\1194900\Desktop\уп трпо\программа\Unit7.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.750,\\server\UserData$\1194900\Desktop\уп трпо\программа\Project3PCH1.h=\\server\UserData$\1194900\Documents\Embarcadero\Studio\Projects\Project3PCH1.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.577,\\server\UserData$\1194900\Desktop\уп трпо\программа\Unit1.dfm=\\server\UserData$\1194900\Documents\Embarcadero\Studio\Projects\Unit1.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.454,=\\server\UserData$\1194900\Desktop\уп трпо\программа\Unit9.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.804,=\\server\UserData$\1194900\Desktop\уп трпо\программа\OKCNHLP1.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.807,=\\server\UserData$\1194900\Desktop\уп трпо\программа\Unit3.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.577,\\server\UserData$\1194900\Desktop\уп трпо\программа\Unit1.h=\\server\UserData$\1194900\Documents\Embarcadero\Studio\Projects\Unit1.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.926,=\\server\UserData$\1194900\Desktop\уп трпо\программа\Unit4.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.726,=c:\program files (x86)\embarcadero\studio\20.0\ObjRepos\EN\Cpp\okcancl1.CPP</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.642,=\\server\UserData$\1194900\Desktop\уп трпо\программа\Unit10.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.572,=\\server\UserData$\1194900\Desktop\уп трпо\программа\Unit5.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.473,\\server\UserData$\1194900\Desktop\уп трпо\программа\Project3.cbproj=\\server\UserData$\1194900\Documents\Embarcadero\Studio\Projects\Project3.cbproj</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.980,=\\server\UserData$\1194900\Desktop\уп трпо\программа\Unit2.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.191,=\\server\UserData$\1194900\Documents\Embarcadero\Studio\Projects\Unit1.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.359,=\\server\UserData$\1194900\Desktop\уп трпо\программа\Unit6.cpp</Transaction>
+  </Transactions>
+	<ProjectSortOrder AutoSort="0" SortType="0">
+    <File Path="c:"/>
+    <File Path="c:\program files (x86)"/>
+    <File Path="c:\program files (x86)\embarcadero"/>
+    <File Path="c:\program files (x86)\embarcadero\studio"/>
+    <File Path="c:\program files (x86)\embarcadero\studio\20.0"/>
+    <File Path="c:\program files (x86)\embarcadero\studio\20.0\ObjRepos"/>
+    <File Path="c:\program files (x86)\embarcadero\studio\20.0\ObjRepos\EN"/>
+    <File Path="c:\program files (x86)\embarcadero\studio\20.0\ObjRepos\EN\Cpp"/>
+    <File Path="c:\program files (x86)\embarcadero\studio\20.0\ObjRepos\EN\Cpp\okcancl1.CPP"/>
+    <File Path="c:\program files (x86)\embarcadero\studio\20.0\ObjRepos\EN\Cpp\okcancl1.CPP"/>
+    <File Path="c:\program files (x86)\embarcadero\studio\20.0\ObjRepos\EN\Cpp\okcancl1.dfm"/>
+    <File Path="c:\program files (x86)\embarcadero\studio\20.0\ObjRepos\EN\Cpp\okcancl1.h"/>
+    <File Path="Project3.cpp"/>
+    <File Path="Project3PCH1.h"/>
+    <File Path="Unit1.cpp"/>
+    <File Path="Unit1.cpp"/>
+    <File Path="Unit1.dfm"/>
+    <File Path="Unit1.h"/>
+    <File Path="Unit2.cpp"/>
+    <File Path="Unit2.cpp"/>
+    <File Path="Unit2.dfm"/>
+    <File Path="Unit2.h"/>
+    <File Path="Unit3.cpp"/>
+    <File Path="Unit3.cpp"/>
+    <File Path="Unit3.dfm"/>
+    <File Path="Unit3.h"/>
+    <File Path="Unit4.cpp"/>
+    <File Path="Unit4.cpp"/>
+    <File Path="Unit4.dfm"/>
+    <File Path="Unit4.h"/>
+    <File Path="Unit5.cpp"/>
+    <File Path="Unit5.cpp"/>
+    <File Path="Unit5.dfm"/>
+    <File Path="Unit5.h"/>
+    <File Path="Unit6.cpp"/>
+    <File Path="Unit6.cpp"/>
+    <File Path="Unit6.dfm"/>
+    <File Path="Unit6.h"/>
+    <File Path="Unit7.cpp"/>
+    <File Path="Unit7.cpp"/>
+    <File Path="Unit7.dfm"/>
+    <File Path="Unit7.h"/>
+    <File Path="Unit8.cpp"/>
+    <File Path="Unit8.cpp"/>
+    <File Path="Unit8.dfm"/>
+    <File Path="Unit8.h"/>
+    <File Path="Unit9.cpp"/>
+    <File Path="Unit9.cpp"/>
+    <File Path="Unit9.dfm"/>
+    <File Path="Unit9.h"/>
+    <File Path="Unit10.cpp"/>
+    <File Path="Unit10.cpp"/>
+    <File Path="Unit10.dfm"/>
+    <File Path="Unit10.h"/>
+  </ProjectSortOrder>
+</BorlandProject>

@@ -1,0 +1,104 @@
+#include <vcl.h>
+#pragma hdrstop
+
+#include <ComObj.hpp>
+#include <utilcls.h>
+
+#include "Unit9.h"
+#include "Unit1.h"
+//---------------------------------------------------------------------------
+#pragma package(smart_init)
+#pragma resource "*.dfm"
+TForm9 *Form9;
+
+Variant vVarAppWord = CreateOleObject("Word.Application");
+Variant v, vVarDocs,vVarParagraphs,vVarParagraph, vVarDoc, vVarApp;
+
+//---------------------------------------------------------------------------
+
+__fastcall TForm9::TForm9(TComponent* Owner)
+	: TForm(Owner)
+{
+}
+//---------------------------------------------------------------------------
+void __fastcall TForm9::FormCloseQuery(TObject *Sender, bool &CanClose)
+{
+	Form1->Visible = true;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm9::Button1Click(TObject *Sender)
+{
+    Timer1->Enabled = true;
+	Button1->Visible = 0;
+	Label1->Visible = 1;
+
+	Memo1->Clear();
+	Memo1->Text = "Информация с " + DateToStr(DatePicker1->Date) + " по "+ DateToStr(DatePicker2->Date);
+	Memo1->Lines->Add("");
+	ADOQuery1->First();
+	int _BudgetForMonth = 0;
+	while (!ADOQuery1->Eof){
+		if(ADOQuery1->FieldByName("Дата_начала_работ")->AsDateTime >= DatePicker1->Date && ADOQuery1->FieldByName("Дата_окончания_работ")->AsDateTime <= DatePicker2->Date){
+			Memo1->Lines->Add("Улица - " + ADOQuery1->FieldByName("Улица")->AsString + " Дата Начала Работ " + ADOQuery1->FieldByName("Дата_начала_работ")->AsDateTime + " Дата Окончания Работ " + ADOQuery1->FieldByName("Дата_окончания_работ")->AsDateTime + " Цена работ " + ADOQuery1->FieldByName("Цена_работ")->AsString);
+			_BudgetForMonth += ADOQuery1->FieldByName("Цена_работ")->AsInteger;
+		}
+		ADOQuery1->Next();
+	}
+
+	Memo1->Lines->Add("");
+	Memo1->Lines->Add("Итого потрачено за месяц - " + IntToStr(_BudgetForMonth));
+	Memo1->Lines->Add("Отчисления в налоговую составили - " + FloatToStr(_BudgetForMonth * 0.16));
+    Memo1->Lines->Add("Общие затраты составили - "+ FloatToStr(_BudgetForMonth + (_BudgetForMonth*0.16)));
+
+	vVarAppWord.OlePropertySet ("Visible", true);
+	vVarDocs = vVarAppWord.OlePropertyGet ("Documents") ;
+	vVarDocs.OleProcedure ("Add") ;
+	vVarDoc = vVarDocs.OleFunction("Item", 1);
+	vVarDoc.OleProcedure ("Activate");
+	vVarParagraphs = vVarDoc.OlePropertyGet ("Paragraphs");
+	vVarParagraphs.OleProcedure ("Add") ;
+	vVarParagraph = vVarParagraphs.OleFunction("Item", 1);
+
+	vVarParagraphs.OleProcedure ("Add");
+	vVarParagraph = vVarParagraphs.OleFunction("Item", 1);
+	vVarParagraph.OlePropertyGet ("Range") .OlePropertySet ("Text",WideString (Memo1->Lines->Strings[2]) );
+	vVarParagraph.OlePropertySet("Alignment",1);
+	vVarParagraph=vVarParagraphs.OleFunction("Item",1);
+	v = vVarParagraph.OlePropertyGet("Range").OlePropertyGet("Font");
+	v.OlePropertySet("Size",20);
+	v.OlePropertySet("Bold",true);
+	v.OlePropertySet("Color",0,123,123);
+	v.OlePropertySet("Name", WideString("Times New Roman"));
+
+for (int i = 0; i < Memo1->Lines->Count; i++) {
+	vVarParagraphs.OleProcedure ("Add");
+	vVarParagraph = vVarParagraphs.OleFunction("Item", i+1);
+	vVarParagraph.OlePropertyGet ("Range") .OlePropertySet ("Text",WideString (Memo1->Lines->Strings[i]) );
+	vVarParagraph.OlePropertySet("Alignment",1);
+	vVarParagraph=vVarParagraphs.OleFunction("Item",i+1);
+	v=vVarParagraph.OlePropertyGet("Range").OlePropertyGet("Font");
+	v.OlePropertySet("Size",16);
+	v.OlePropertySet("Name", WideString("Times New Roman"));
+	}
+
+	AnsiString vAsCurDir1=GetCurrentDir()+"\\Отчет.docx";
+	vVarDoc=vVarDocs.OleFunction("Item",1);
+	vVarDoc.OleProcedure("SaveAs",WideString(vAsCurDir1.c_str()));
+
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm9::FormCreate(TObject *Sender)
+{
+ Memo1->Text = "";
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm9::Timer1Timer(TObject *Sender)
+{
+	Label1->Visible = 0;
+	Button1->Visible = 1;
+}
+//---------------------------------------------------------------------------
+

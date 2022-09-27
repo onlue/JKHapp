@@ -1,0 +1,127 @@
+//---------------------------------------------------------------------------
+
+#include <vcl.h>
+#pragma hdrstop
+
+#include "Unit8.h"
+#include "Unit1.h"
+
+
+//---------------------------------------------------------------------------
+#pragma package(smart_init)
+#pragma resource "*.dfm"
+
+TForm8 *Form8;
+//---------------------------------------------------------------------------
+__fastcall TForm8::TForm8(TComponent* Owner)
+	: TForm(Owner)
+{
+}
+//---------------------------------------------------------------------------
+void __fastcall TForm8::FormCloseQuery(TObject *Sender, bool &CanClose)
+{
+	Form1->Visible = true;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm8::ComboBox1Change(TObject *Sender)
+{
+	if (ComboBox1->Text == "Районы"){
+		DBCtrlGrid1->Visible = true;
+		DBCtrlGrid2->Visible = false;
+		DBCtrlGrid3->Visible = false;
+		DBCtrlGrid4->Visible = false;
+	}
+	if (ComboBox1->Text == "Рабочие"){
+		DBCtrlGrid1->Visible = false;
+		DBCtrlGrid2->Visible = true;
+		DBCtrlGrid3->Visible = false;
+		DBCtrlGrid4->Visible = false;
+	}
+	if (ComboBox1->Text == "ВидыРабот") {
+		DBCtrlGrid1->Visible = false;
+		DBCtrlGrid2->Visible = false;
+		DBCtrlGrid3->Visible = true;
+		DBCtrlGrid4->Visible = false;
+	}
+	if (ComboBox1->Text == "Дома"){
+		DBCtrlGrid4->Visible = true;
+		DBCtrlGrid1->Visible = false;
+		DBCtrlGrid2->Visible = false;
+		DBCtrlGrid3->Visible = false;
+	}
+
+
+}
+//---------------------------------------------------------------------------
+
+int _ScrollFix = 0;
+
+void __fastcall TForm8::FormMouseWheelDown(TObject *Sender, TShiftState Shift, TPoint &MousePos,
+		  bool &Handled)
+{
+	_ScrollFix++;
+	if( _ScrollFix %5==0){
+
+		DBCtrlGrid1->DoKey(gkScrollDown);
+		DBCtrlGrid2->DoKey(gkScrollDown);
+		DBCtrlGrid3->DoKey(gkScrollDown);
+		DBCtrlGrid4->DoKey(gkScrollDown);
+
+	}
+
+}
+
+//---------------------------------------------------------------------------
+
+void __fastcall TForm8::FormMouseWheelUp(TObject *Sender, TShiftState Shift, TPoint &MousePos,
+          bool &Handled)
+{
+	_ScrollFix++;
+	if(_ScrollFix %5==0){
+		DBCtrlGrid1->DoKey(gkScrollUp);
+		DBCtrlGrid2->DoKey(gkScrollUp);
+		DBCtrlGrid3->DoKey(gkScrollUp);
+		DBCtrlGrid4->DoKey(gkScrollUp);
+	}
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm8::Button1Click(TObject *Sender)
+{
+	ADOQuery11->Active = false;
+	ADOQuery11->Active = true;
+	ADOQuery1->Active = false;
+	ADOQuery1->Active = true;
+	ADOQuery2->Active = false;
+	ADOQuery2->Active = true;
+	ADOQuery3->Active = false;
+	ADOQuery3->Active = true;
+}
+//---------------------------------------------------------------------------
+
+
+
+void __fastcall TForm8::MenuItem5Click(TObject *Sender)
+{
+  ADOQuery11->Delete();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm8::N1Click(TObject *Sender)
+{
+    ADOQuery3->Delete();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm8::MenuItem1Click(TObject *Sender)
+{
+    ADOQuery2->Delete();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm8::MenuItem3Click(TObject *Sender)
+{
+    ADOQuery1->Delete();
+}
+//---------------------------------------------------------------------------

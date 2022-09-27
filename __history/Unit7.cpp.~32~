@@ -1,0 +1,130 @@
+//---------------------------------------------------------------------------
+
+#include <vcl.h>
+#pragma hdrstop
+
+#include "Unit7.h"
+
+//---------------------------------------------------------------------------
+#pragma package(smart_init)
+#pragma resource "*.dfm"
+TForm7 *Form7;
+
+
+//---------------------------------------------------------------------------
+__fastcall TForm7::TForm7(TComponent* Owner)
+	: TForm(Owner)
+{
+
+}
+//---------------------------------------------------------------------------
+void __fastcall TForm7::Timer1Timer(TObject *Sender)
+{   ADOQuery2->Refresh();
+	UnicodeString s;
+	bool add = true;
+	ADOQuery2->First();
+	 while(!ADOQuery2->Eof){
+		if(ADOQuery2->Fields->FieldByName("Улица")->AsString != ""){
+		s = ADOQuery2->Fields->FieldByName("Улица")->AsString;
+			for(int i = 0;i<ComboBox1->Items->Count;i++){
+				if(s == ComboBox1->Items->Strings[i]){
+					add = false;
+				}
+			}
+		}
+		if(add == false){
+			ADOQuery2->Next();
+			add = true;
+		}
+		else{
+			ComboBox1->Items->Add(s);
+			ADOQuery2->Next();
+		}
+	 }
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm7::Timer2Timer(TObject *Sender)
+{   ADOQuery3->Refresh();
+	UnicodeString s;
+	UnicodeString s2;
+	bool add = true;
+	ADOQuery3->First();
+	 while(!ADOQuery3->Eof){
+		if(ADOQuery3->Fields->FieldByName("ФИО")->AsString != ""){
+		s = ADOQuery3->Fields->FieldByName("ФИО")->AsString;
+		s2 = ADOQuery3->Fields->FieldByName("Возможные_работы")->AsString;
+		s = s + " " + s2;
+			for(int i = 0;i<ComboBox2->Items->Count;i++){
+				if(s == ComboBox2->Items->Strings[i]){
+					add = false;
+				}
+			}
+		}
+		if(add == false){
+			ADOQuery3->Next();
+			add = true;
+		}
+		else{
+			ComboBox2->Items->Add(s);
+			ADOQuery3->Next();
+		}
+	 }
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm7::Button1Click(TObject *Sender)
+{
+	int counter = 0;
+	ADOQuery1->First();
+	while(!ADOQuery1->Eof){
+		counter++;
+		ADOQuery1->Next();
+	}
+	ADOQuery1->Insert();
+
+	ADOQuery1->FieldByName("Код")->AsString = IntToStr(counter);
+	ADOQuery1->FieldByName("Улица")->AsString = ComboBox1->Text;
+	ADOQuery1->FieldByName("Цена_работ")->AsString = Edit1->Text;
+	ADOQuery1->FieldByName("Вид_работ")->AsString = ComboBox2->Text;
+	ADOQuery1->FieldByName("Дата_начала_работ")->AsString = DatePicker1->Date;
+	ADOQuery1->FieldByName("Дата_окончания_работ")->AsString = DatePicker2->Date;
+	ADOQuery1->FieldByName("Заметка")->AsString = Memo1->Text;
+
+	ADOQuery1->Post();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm7::Button2Click(TObject *Sender)
+{
+	ADOQuery1->Active = false;
+	ADOQuery1->Active = true;
+	ADOQuery2->Active = false;
+	ADOQuery2->Active = true;
+	ADOQuery3->Active = false;
+	ADOQuery3->Active = true;
+}
+//---------------------------------------------------------------------------
+
+
+
+
+
+void __fastcall TForm7::FormClose(TObject *Sender, TCloseAction &Action)
+{
+	Edit1->Clear();
+    Memo1->Clear();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm7::Edit1KeyPress(TObject *Sender, System::WideChar &Key)
+{
+    if(isdigit(Key) || Key == '-'){
+	   continue;
+	}
+	else{
+        Key = 0;
+    }
+}
+//---------------------------------------------------------------------------
+

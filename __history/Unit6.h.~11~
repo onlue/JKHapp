@@ -1,0 +1,39 @@
+//---------------------------------------------------------------------------
+
+#ifndef Unit6H
+#define Unit6H
+//---------------------------------------------------------------------------
+#include <System.Classes.hpp>
+#include <Vcl.Controls.hpp>
+#include <Vcl.StdCtrls.hpp>
+#include <Vcl.Forms.hpp>
+#include <Data.DB.hpp>
+#include <Data.Win.ADODB.hpp>
+#include <Vcl.ExtCtrls.hpp>
+//---------------------------------------------------------------------------
+class TForm6 : public TForm
+{
+__published:	// IDE-managed Components
+	TEdit *Edit1;
+	TEdit *Edit2;
+	TComboBox *ComboBox1;
+	TButton *Button1;
+	TLabel *Label1;
+	TTimer *Timer1;
+	TADOQuery *ADOQuery1;
+	TDataSource *DataSource1;
+	TTimer *Timer2;
+	TADOConnection *ADOConnection1;
+	void __fastcall Button1Click(TObject *Sender);
+	void __fastcall Timer1Timer(TObject *Sender);
+	void __fastcall Timer2Timer(TObject *Sender);
+	void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
+	void __fastcall Edit2KeyPress(TObject *Sender, System::WideChar &Key);
+private:	// User declarations
+public:		// User declarations
+	__fastcall TForm6(TComponent* Owner);
+};
+//---------------------------------------------------------------------------
+extern PACKAGE TForm6 *Form6;
+//---------------------------------------------------------------------------
+#endif
